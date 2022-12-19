@@ -1,4 +1,5 @@
-﻿using P9_1214078.controller;
+﻿using MySql.Data.MySqlClient;
+using P9_1214078.controller;
 using P9_1214078.model;
 using System;
 using System.Collections.Generic;
@@ -23,20 +24,40 @@ namespace P9_1214078.view
 
         public void Tampil()
         {
-            //QueryDB
-            DataNilai.DataSource = koneksi.ShowData("select * from t_nilai");
+
+            DataNilai.DataSource = koneksi.ShowData("SELECT " + "id_nilai, matkul, kategori, t_nilai.npm, nama, nilai " + 
+                "FROM t_nilai JOIN t_mahasiswa ON t_mahasiswa.npm = t_nilai.npm");
+
+
+            /*//QueryDB
+            DataNilai.DataSource = koneksi.ShowData("select * from t_nilai");*/
 
             //Mengubah Nama Kolom Table
+            DataNilai.Columns[0].HeaderText = "ID";
             DataNilai.Columns[1].HeaderText = "Matkul";
             DataNilai.Columns[2].HeaderText = "Kategori";
-            DataNilai.Columns[3].HeaderText = "npm";
-            DataNilai.Columns[4].HeaderText = "Nilai";
+            DataNilai.Columns[3].HeaderText = "NPM";
+            DataNilai.Columns[4].HeaderText = "Nama";
+            DataNilai.Columns[5].HeaderText = "Nilai";
 
+        }
+        public void GetDataMhs()
+        {
+            //ambil data NPM dari table (t_mahasiswa) untuk mengisi data pada combobox NPM
+            koneksi.OpenConnection();
+            MySqlDataReader reader = koneksi.reader("SELECT * FROM t_mahasiswa");
+            while (reader.Read())
+            {
+                npm.Items.Add(reader.GetString("npm"));
+            }
+            reader.Close();
+            koneksi.CloseConnection();
         }
 
         private void FormNilai_Load(object sender, EventArgs e)
         {
             Tampil();
+            GetDataMhs();
         }
 
         public FormNilai()
@@ -103,6 +124,7 @@ namespace P9_1214078.view
             Kategori.Text = "";
             npm.SelectedIndex = -1;
             Nilai.Text = "";
+            tbNama.Text = "";
         }
 
         private void btnHapus_Click(object sender, EventArgs e)
@@ -124,17 +146,43 @@ namespace P9_1214078.view
             Matkul.Text = DataNilai.Rows[e.RowIndex].Cells[1].Value.ToString();
             Kategori.Text = DataNilai.Rows[e.RowIndex].Cells[2].Value.ToString();
             npm.Text = DataNilai.Rows[e.RowIndex].Cells[3].Value.ToString();
-            Nilai.Text = DataNilai.Rows[e.RowIndex].Cells[4].Value.ToString();
+            Nilai.Text = DataNilai.Rows[e.RowIndex].Cells[5].Value.ToString();
         }
 
         private void tbCariData_TextChanged(object sender, EventArgs e)
         {
             //Query DB Search Data
+            DataNilai.DataSource = koneksi.ShowData("SELECT " + 
+                "id_nilai, matkul, kategori, t_nilai.npm, nama, nilai " + 
+                "FROM t_nilai JOIN t_mahasiswa ON t_mahasiswa.npm = t_nilai.npm " +
+                "WHERE t_nilai.npm LIKE '%' '" + tbCariData.Text + "' '%' " +
+                "OR matkul LIKE '%' '" + tbCariData.Text + "' '%' ");
+
+
+            /*//Query DB Search Data
             DataNilai.DataSource = koneksi.ShowData("SELECT * FROM t_nilai WHERE id_nilai LIKE '%' '" + tbCariData.Text + "' '%' " +
                 "OR matkul LIKE '%' '" + tbCariData.Text + "' '%' " +
                 "OR kategori LIKE '%' '" + tbCariData.Text + "' '%' " +
                 "OR npm LIKE '%' '" + tbCariData.Text + "' '%' " +
-                "OR nilai LIKE '%' '" + tbCariData.Text + "' '%' " );
+                "OR nilai LIKE '%' '" + tbCariData.Text + "' '%' " );*/
+        }
+
+        public void GetNamaMhs()
+        {
+            //ambil data nama ketikan combobox npm dipilih
+            koneksi.OpenConnection();
+            MySqlDataReader reader = koneksi.reader("SELECT nama FROM t_mahasiswa " + "WHERE npm = '" + npm.Text + "'");
+            while (reader.Read())
+            {
+                tbNama.Text = reader.GetString(0);
+            }
+            reader.Close();
+            koneksi.CloseConnection();
+        }
+
+        private void npm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetNamaMhs();
         }
     }
 }

@@ -47,6 +47,7 @@
             this.Kategori = new System.Windows.Forms.ComboBox();
             this.Matkul = new System.Windows.Forms.ComboBox();
             this.npm = new System.Windows.Forms.ComboBox();
+            this.tbNama = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.FormInputNilai.SuspendLayout();
@@ -58,7 +59,7 @@
             // 
             this.groupBox1.Controls.Add(this.tbCariData);
             this.groupBox1.Controls.Add(this.CariData);
-            this.groupBox1.Location = new System.Drawing.Point(443, 369);
+            this.groupBox1.Location = new System.Drawing.Point(571, 364);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(296, 63);
             this.groupBox1.TabIndex = 22;
@@ -88,7 +89,7 @@
             this.groupBox3.Controls.Add(this.btnRefresh);
             this.groupBox3.Controls.Add(this.btnSimpan);
             this.groupBox3.Controls.Add(this.btnUbah);
-            this.groupBox3.Location = new System.Drawing.Point(443, 439);
+            this.groupBox3.Location = new System.Drawing.Point(571, 434);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(296, 190);
             this.groupBox3.TabIndex = 20;
@@ -137,6 +138,7 @@
             // 
             // FormInputNilai
             // 
+            this.FormInputNilai.Controls.Add(this.tbNama);
             this.FormInputNilai.Controls.Add(this.npm);
             this.FormInputNilai.Controls.Add(this.Matkul);
             this.FormInputNilai.Controls.Add(this.Kategori);
@@ -147,7 +149,7 @@
             this.FormInputNilai.Controls.Add(this.Nilai);
             this.FormInputNilai.Location = new System.Drawing.Point(12, 361);
             this.FormInputNilai.Name = "FormInputNilai";
-            this.FormInputNilai.Size = new System.Drawing.Size(413, 262);
+            this.FormInputNilai.Size = new System.Drawing.Size(553, 262);
             this.FormInputNilai.TabIndex = 21;
             this.FormInputNilai.TabStop = false;
             this.FormInputNilai.Text = "Form Input Nilai";
@@ -193,7 +195,7 @@
             this.TabelDataNilai.Controls.Add(this.DataNilai);
             this.TabelDataNilai.Location = new System.Drawing.Point(12, 12);
             this.TabelDataNilai.Name = "TabelDataNilai";
-            this.TabelDataNilai.Size = new System.Drawing.Size(726, 343);
+            this.TabelDataNilai.Size = new System.Drawing.Size(855, 343);
             this.TabelDataNilai.TabIndex = 19;
             this.TabelDataNilai.TabStop = false;
             this.TabelDataNilai.Text = "TabelDataNilai";
@@ -205,7 +207,7 @@
             this.DataNilai.Location = new System.Drawing.Point(12, 33);
             this.DataNilai.Name = "DataNilai";
             this.DataNilai.RowHeadersWidth = 51;
-            this.DataNilai.Size = new System.Drawing.Size(714, 318);
+            this.DataNilai.Size = new System.Drawing.Size(837, 318);
             this.DataNilai.TabIndex = 0;
             this.DataNilai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataNilai_CellClick_1);
             // 
@@ -213,7 +215,7 @@
             // 
             this.Nilai.Location = new System.Drawing.Point(112, 157);
             this.Nilai.Name = "Nilai";
-            this.Nilai.Size = new System.Drawing.Size(295, 20);
+            this.Nilai.Size = new System.Drawing.Size(258, 20);
             this.Nilai.TabIndex = 8;
             // 
             // Kategori
@@ -224,7 +226,7 @@
             "UAS"});
             this.Kategori.Location = new System.Drawing.Point(112, 78);
             this.Kategori.Name = "Kategori";
-            this.Kategori.Size = new System.Drawing.Size(295, 21);
+            this.Kategori.Size = new System.Drawing.Size(258, 21);
             this.Kategori.TabIndex = 14;
             // 
             // Matkul
@@ -241,28 +243,30 @@
             "General English II"});
             this.Matkul.Location = new System.Drawing.Point(112, 45);
             this.Matkul.Name = "Matkul";
-            this.Matkul.Size = new System.Drawing.Size(295, 21);
+            this.Matkul.Size = new System.Drawing.Size(258, 21);
             this.Matkul.TabIndex = 15;
             // 
             // npm
             // 
             this.npm.FormattingEnabled = true;
-            this.npm.Items.AddRange(new object[] {
-            "1214001",
-            "1214002",
-            "1214003",
-            "1212",
-            "1313"});
             this.npm.Location = new System.Drawing.Point(112, 116);
             this.npm.Name = "npm";
-            this.npm.Size = new System.Drawing.Size(295, 21);
+            this.npm.Size = new System.Drawing.Size(258, 21);
             this.npm.TabIndex = 16;
+            this.npm.SelectedIndexChanged += new System.EventHandler(this.npm_SelectedIndexChanged);
+            // 
+            // tbNama
+            // 
+            this.tbNama.Location = new System.Drawing.Point(390, 117);
+            this.tbNama.Name = "tbNama";
+            this.tbNama.Size = new System.Drawing.Size(144, 20);
+            this.tbNama.TabIndex = 17;
             // 
             // FormNilai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 656);
+            this.ClientSize = new System.Drawing.Size(903, 783);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.FormInputNilai);
@@ -302,5 +306,6 @@
         private System.Windows.Forms.GroupBox TabelDataNilai;
         private System.Windows.Forms.DataGridView DataNilai;
         private System.Windows.Forms.ComboBox npm;
+        private System.Windows.Forms.TextBox tbNama;
     }
 }
