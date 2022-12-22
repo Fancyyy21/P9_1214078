@@ -51,5 +51,24 @@ namespace P9_1214078
             newUlbi.MdiParent = this;
             newUlbi.Show();
         }
+
+        private void tugasPraktikum11ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataMasterBarangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormMasterBarang MasterBarang = new FormMasterBarang();
+            MasterBarang.MdiParent = this;
+            MasterBarang.Show();
+        }
+
+        private void dataTransaksiToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormTransaksiBarang TransaksiBarang = new FormTransaksiBarang();
+            TransaksiBarang.MdiParent = this;
+            TransaksiBarang.Show();
+        }
     }
 }

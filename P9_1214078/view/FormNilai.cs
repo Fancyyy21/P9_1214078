@@ -159,7 +159,10 @@ namespace P9_1214078.view
                 "OR matkul LIKE '%' '" + tbCariData.Text + "' '%' ");
 
 
-            /*//Query DB Search Data
+            /*DataNilai.DataSource = koneksi.ShowData("SELECT " + "id_nilai, matkul, kategori, t_nilai.npm, nama, nilai " +
+                "FROM t_nilai JOIN t_mahasiswa ON t_mahasiswa.npm = t_nilai.npm"); */
+
+            /*// Query DB Search Data
             DataNilai.DataSource = koneksi.ShowData("SELECT * FROM t_nilai WHERE id_nilai LIKE '%' '" + tbCariData.Text + "' '%' " +
                 "OR matkul LIKE '%' '" + tbCariData.Text + "' '%' " +
                 "OR kategori LIKE '%' '" + tbCariData.Text + "' '%' " +
