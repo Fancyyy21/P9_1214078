@@ -89,10 +89,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutMe.cs">
+    <Compile Include="view\AboutMe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutMe.Designer.cs">
+    <Compile Include="view\AboutMe.Designer.cs">
       <DependentUpon>AboutMe.cs</DependentUpon>
     </Compile>
     <Compile Include="controller\CekLogin.cs" />
@@ -100,20 +100,20 @@
     <Compile Include="controller\Mahasiswa.cs" />
     <Compile Include="controller\Nilai.cs" />
     <Compile Include="controller\TransaksiBarang.cs" />
-    <Compile Include="FormLogin.cs">
+    <Compile Include="view\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLogin.Designer.cs">
+    <Compile Include="view\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="model\Mstr_Barang.cs" />
     <Compile Include="model\M_mahasiswa.cs" />
     <Compile Include="model\M_Nilai.cs" />
     <Compile Include="model\Transaksi_Barang.cs" />
-    <Compile Include="ParentForm.cs">
+    <Compile Include="view\ParentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ParentForm.Designer.cs">
+    <Compile Include="view\ParentForm.Designer.cs">
       <DependentUpon>ParentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="view\Form1.cs">
@@ -143,13 +143,13 @@
     <Compile Include="view\FormTransaksiBarang.Designer.cs">
       <DependentUpon>FormTransaksiBarang.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AboutMe.resx">
+    <EmbeddedResource Include="view\AboutMe.resx">
       <DependentUpon>AboutMe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin.resx">
+    <EmbeddedResource Include="view\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ParentForm.resx">
+    <EmbeddedResource Include="view\ParentForm.resx">
       <DependentUpon>ParentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Form1.resx">
