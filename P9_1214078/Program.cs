@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P9_1214078.view;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace P9_1214078
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+            Application.Run(new FstartUp());
         }
     }
 }

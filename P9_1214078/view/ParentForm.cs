@@ -70,5 +70,10 @@ namespace P9_1214078
             TransaksiBarang.MdiParent = this;
             TransaksiBarang.Show();
         }
+
+        private void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

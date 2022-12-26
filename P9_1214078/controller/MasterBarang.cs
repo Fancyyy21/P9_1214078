@@ -18,7 +18,7 @@ namespace P9_1214078.controller
         {
             Boolean status = false;
             try
-            {
+            {   
                 koneksi.OpenConnection();
                 koneksi.ExecuteQuery("INSERT INTO t_barang(nama_barang, harga) VALUES('" + mstrbarang.Nama_barang + "', '" +
                 mstrbarang.Harga + "')");
@@ -70,5 +70,8 @@ namespace P9_1214078.controller
             }
             return status;
         }
+
+
+
     }
 }
