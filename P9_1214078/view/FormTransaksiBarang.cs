@@ -158,11 +158,7 @@ namespace P9_1214078.view
                 "FROM t_transaksi JOIN t_barang ON t_barang.id_barang = t_transaksi.id_barang");*/
 
             //Query DB Search Data
-            /*DataTransaksi.DataSource = koneksi.ShowData("SELECT " +
-                " id_transaksi, t_transaksi.id_barang, nama_barang, harga, qty, total " +
-                "FROM t_transaksi JOIN t_barang ON t_barang.id_barang = t_transaksi.id_barang" +
-                "WHERE t_transaksi.id_barang LIKE '%' '" + tbCariData.Text + "' '%' " +
-                "OR nama_barang LIKE '%' '" + tbCariData.Text + "' '%' ");*/
+            DataTransaksi.DataSource = koneksi.ShowData("SELECT id_transaksi, t_transaksi.id_barang, nama_barang, harga, qty, total FROM t_transaksi JOIN t_barang ON t_barang.id_barang = t_transaksi.id_barang WHERE t_transaksi.id_barang LIKE '%' '" + tbCariData.Text + "' '%' OR nama_barang LIKE '%' '" + tbCariData.Text + "' '%' ");
         }
 
         public void GetNamaBrg()
@@ -199,14 +195,23 @@ namespace P9_1214078.view
 
         private void tbQuantity_TextChanged(object sender, EventArgs e)
         {
-            try
+            if (tbQuantity.Text != "")
             {
-                tbTotal.Text = (float.Parse(tbHargaBarang.Text) * float.Parse(tbQuantity.Text)).ToString();
+                try
+                {
+                    tbTotal.Text = (float.Parse(tbHargaBarang.Text) * float.Parse(tbQuantity.Text)).ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Quantity Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbTotal.Text = "";
+                }
             }
-            catch
+            else
             {
+                tbTotal.Text = "";
+            }
 
-            }
         }
     }
 }
